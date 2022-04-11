@@ -1,0 +1,67 @@
+pipeline {
+    agent any
+    
+    environment{
+        name='global variable can be use for all'
+    }
+    parameters{
+        string(name:'person', defaultValue:'Oman', description:'who are you')
+        booleanParam(name:'Is Male', defaultValue:'True', description:'Gender')
+        choice(name:'City', choices:['Jaipur','Mumbai','Delhi'], description:'')
+    }
+
+    stages {
+        stage('1st job') {
+            steps {
+                echo 'this is first job'
+                sh 'date'
+            }
+        }
+   
+        stage('2nd job in pipeline') {
+             input{
+                    message "should we continue"
+                    ok "yes we should"
+                     }
+            steps {
+               
+                echo 'welcome on 2nd job'
+                sh ''' 
+                  pwd
+                  date
+                  '''
+            }
+        }
+   
+        stage('3rd job ') {
+            environment{
+                name='local variable'
+             }
+            steps {
+                echo 'these are commands of 3rd job that will run in this job'
+                sh 'echo "${name}"'
+            }
+        }
+    
+        stage('4th job ') {
+            steps {
+                echo 'add your commands here'
+                sh 'echo "${name}"'
+            }
+        }
+        
+    }  
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+        failure { 
+            echo 'this will run when any job will fail'
+        }
+        success { 
+            echo 'this will run when all jobs will run'
+        }
+    }
+    
+   
+}
