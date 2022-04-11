@@ -16,7 +16,7 @@ class test (unittest.TestCase):
         self.assertEqual(add(5,10),15)
     def test_sub(self):
         self.assertEqual(sub(15,10),5)
-    def test_add(self):
+    def test_mul(self):
         self.assertEqual(mul(5,10),50)
         
         
