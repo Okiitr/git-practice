@@ -7,7 +7,7 @@ def add(a,b):
 class test (unittest.TestCase):
     
     def test_add(self):
-        self.assertEqual(add(5,10),15)
+        self.assertEqual(add(5,10),14)
         
         
         
