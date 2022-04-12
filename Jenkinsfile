@@ -37,7 +37,7 @@ date'''
       }
     }
 
-    stage('error') {
+    stage('mail') {
       steps {
         mail(subject: 'jenkins', body: 'hello oman this mail is sent by jenkins', from: 'okumar@ch.iitr.ac.in', to: 'kumaroman4@gmail.com')
       }
