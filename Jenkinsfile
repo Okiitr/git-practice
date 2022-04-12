@@ -15,6 +15,12 @@ pipeline {
           }
         }
 
+        stage('parallel') {
+          steps {
+            build(job: 'build job', propagate: true, quietPeriod: 2, wait: true)
+          }
+        }
+
       }
     }
 
