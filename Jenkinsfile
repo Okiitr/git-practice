@@ -15,6 +15,12 @@ pipeline {
           }
         }
 
+        stage('parallel') {
+          steps {
+            sleep 2
+          }
+        }
+
       }
     }
 
@@ -28,6 +34,12 @@ date'''
     stage('3rd stage') {
       steps {
         echo 'hi there'
+      }
+    }
+
+    stage('mail') {
+      steps {
+        sh 'pwd'
       }
     }
 
