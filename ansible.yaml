@@ -1,0 +1,28 @@
+---
+ - name : this is the name of playbook
+   hosts: all
+   vars:
+    - x=36
+    - y=56
+   vars_prompt:
+    - name: variable_name
+      prompt: this msg will show on prompt
+      private: yes
+   become: yes
+
+   tasks:
+   - name: this is the first task
+     debug:
+      msg:
+       - 'this will print on top {{x}}'
+      var: x y 
+
+   - name: 2nd task
+     debug:
+      msg:
+        - 'this will print on top {{x}}'
+        
+   - name: installation
+     apt:
+      name: git
+      state: present
